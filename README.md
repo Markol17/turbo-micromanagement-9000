@@ -1,5 +1,8 @@
 # turbo-micromanagement-9000
 
+## Disclaimer
+The tool was created exclusively for analytical purposes and not for exposing or discriminating against coworkers.
+
 ## Mac
 ### Step 1
 Go to your bin folder in usr/local/bin
