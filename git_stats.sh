@@ -34,6 +34,8 @@ delta_time=$(git log --author="$selected_author" --pretty="%at %h" | sort -n | a
   { prev = $1 }'
 )
 
+number_of_branches=$(git branch -a | wc -l)
+
 file_types_changed=$(git log --author="$selected_author" --pretty=tformat: --numstat | awk '
   NF==3 {
     total_changes += 1;
@@ -77,4 +79,7 @@ echo "---------------------------------"
 echo "\nAdditional Stats:"
 echo "-----------------------------------"
 echo "$file_types_changed"
+echo "-----------------------------------"
+
+echo "\nNumber of branches: $number_of_branches"
 echo "-----------------------------------"
