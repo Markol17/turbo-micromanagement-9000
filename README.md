@@ -1,20 +1,26 @@
 # turbo-micromanagement-9000
 
 ## Disclaimer
+
 The tool was created exclusively for analytical purposes and not for exposing or discriminating against coworkers.
 
 ## Mac
+
 ### Step 1
+
 Go to your bin folder in usr/local/bin
 
 ![image](https://github.com/Markol17/turbo-micromanagement-9000/assets/19934640/0851d736-6edd-4d80-ae6d-3d02929e457d)
 
 ### Step 2
+
 Create a file called git_stats.sh:
-```bash touch git_stats.sh```
+`bash touch git_stats.sh`
 
 ### Step 3
-Copy paste this code in the ```git_stats.sh``` file
+
+Copy paste this code in the `git_stats.sh` file
+
 ```bash
 authors=$(git shortlog -sne --all | awk '{print $2}')
 
@@ -51,6 +57,8 @@ delta_time=$(git log --author="$selected_author" --pretty="%at %h" | sort -n | a
   }
   { prev = $1 }'
 )
+
+number_of_branches=$(git branch -a | wc -l)
 
 file_types_changed=$(git log --author="$selected_author" --pretty=tformat: --numstat | awk '
   NF==3 {
@@ -96,18 +104,25 @@ echo "\nAdditional Stats:"
 echo "-----------------------------------"
 echo "$file_types_changed"
 echo "-----------------------------------"
+
+echo "\nNumber of branches: $number_of_branches"
+echo "-----------------------------------"
 ```
 
 ### Step 4
-Run this command 
-```bash 
+
+Run this command
+
+```bash
 chmod +x git_stats.sh
 ```
 
 ### Step 5
 
 Now you can run git_stats.sh in any git repo with this command:
+
 ```bash
 git_stats.sh
 ```
+
 ![image](https://github.com/Markol17/turbo-micromanagement-9000/assets/19934640/7e731934-f5a4-4d0b-8f6c-6982d7eb3925)
